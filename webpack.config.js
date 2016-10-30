@@ -9,7 +9,7 @@ var PORT    = config.PORT;
 
 module.exports = {
   context: CONTEXT,
-  entry: ['whatwg-fetch', 'babel-polyfill', './ui/entry.js'],
+  entry: ['whatwg-fetch', 'babel-polyfill', './app/entry.js'],
   output: {
     path: path.resolve(CONTEXT, 'public/dist'),
     publicPath: 'http://localhost:' + PORT + '/dist/',
@@ -22,7 +22,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'stage-0'],
+          presets: ['es2015', 'stage-0', 'react'],
           plugins: ['transform-decorators-legacy']
         }
       }, {

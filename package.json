@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run vendor && webpack",
     "develop": "export NODE_ENV=develop && npm run vendor && webpack-dev-server",
-    "linter": "eslint ui/**",
+    "linter": "eslint app/**",
     "server": "http-server public",
     "vendor": "webpack --config vendor.js"
   },

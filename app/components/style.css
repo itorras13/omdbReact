@@ -1,0 +1,40 @@
+div.center
+{
+  text-align: center;
+}
+
+img {
+    width: 100%;
+}
+
+div.form
+{
+  padding-top: 30px;
+  display: inline-block;
+}
+
+body {
+    font-family: Helvetica, Arial, Sans-Serif, sans-serif;
+    background: white;
+}
+
+.title {
+    display: flex;
+    padding: 2px;
+}
+
+table{
+   margin: 0 auto;
+}
+
+.table-nonfluid {
+   width: auto !important;
+}
+
+.table th, .table td { 
+  border-top: none !important; 
+}
+
+.movie-data {
+  word-wrap: break-word;
+}
