@@ -1,9 +1,9 @@
 export default class Form extends React.Component {
 
   _processQuery(event) {
-  	event.preventDefault();
-  	this.props.queryMovies(this.refs.queryString.value);
-  	this.setState({queryString: ""})
+    event.preventDefault();
+    this.props.queryMovies(this.state.queryString);
+    this.setState({queryString: ""})
   }
 
   constructor(props) {
@@ -21,7 +21,8 @@ export default class Form extends React.Component {
     return (
       <div className="center">
         <div className="form">
-          <h3>Search Titles:</h3> <input className="form-control" type="text" ref="queryString"
+          <h3>Search Titles:</h3>
+          <input className="form-control" type="text"
             placeholder="Samurai"
             value={this.state.queryString}
             onChange={this._handleChange} /><br/><br/>

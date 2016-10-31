@@ -9,11 +9,11 @@ import * as MovieActions from "../actions"
 
 export class HomePage extends React.Component {
   constructor(props){
-  	super(props);
-  	this.state = {
-  		movies: [],
-  		query: ""
-  	}
+    super(props);
+    this.state = {
+      movies: [],
+      query: ""
+    }
   }
   _queryMovies(query) {
     if (query.length < 2) {
@@ -21,18 +21,17 @@ export class HomePage extends React.Component {
     } else {
       this.props.loadMovies(query);
     }
-  	this.state["query"] = query;
-  	this.setState(this.state);
+    this.setState({query: query});
   }
 
   render() {
-  	const { movies } = this.props;
+    const { movies } = this.props;
     return( 
-    	 <div>
-    	 <Form queryMovies={this._queryMovies.bind(this)}/>
-       <MovieGallery movies={movies}/>
-    	 </div>
-  	)
+      <div>
+        <Form queryMovies={this._queryMovies.bind(this)}/>
+        <MovieGallery movies={movies}/>
+      </div>
+    )
   }
 }
 
