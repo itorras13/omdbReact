@@ -35,7 +35,18 @@ export class HomePage extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    query: state.query
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(MovieActions, dispatch);
+}
+
 export default connect(
-  state => ({movies: state.movies, query: state.query}),
-  dispatch => bindActionCreators(MovieActions, dispatch)
+  mapStateToProps,
+  mapDispatchToProps
 )(HomePage)
