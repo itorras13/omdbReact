@@ -1,8 +1,10 @@
-const OMDB_ENDPOINT_START = 'http://www.omdbapi.com/?i=';
-const OMDB_ENDPOINT_END = '&plot=full&r=json';
+import qs from 'qs';
+
+const OMDB_ENDPOINT_BASE = 'http://www.omdbapi.com/?';
 
 export const fetchPlots = (imdbID) => {
-  return fetch(OMDB_ENDPOINT_START + imdbID + OMDB_ENDPOINT_END).then(function fetchJSON(response) {
+  const OMDB_ENDPOINT = OMDB_ENDPOINT_BASE + qs.stringify({ i: imdbID, plot: 'full', r: 'json' });
+  return fetch(OMDB_ENDPOINT).then(function fetchJSON(response) {
     return response.json();
   });
 };
