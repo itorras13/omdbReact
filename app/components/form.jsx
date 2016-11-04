@@ -1,3 +1,5 @@
+import ActivityIndicator from 'react-activity-indicator'
+
 export default class Form extends React.Component {
 
   _processQuery(event) {
@@ -26,7 +28,10 @@ export default class Form extends React.Component {
             placeholder="Samurai"
             value={this.state.queryString}
             onChange={this._handleChange} /><br/><br/>
-          <button className="btn btn-primary" onClick={this._processQuery}>Submit</button><br/><br/>
+          { this.props.isFetching ? <ActivityIndicator number={5} duration={200} activeColor="#0099CC" borderColor="white"/>
+                                  : <button className="btn btn-primary" onClick={this._processQuery}>Submit</button>
+          }
+          <br/><br/>
         </div>
       </div>
     );
