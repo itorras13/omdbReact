@@ -13,20 +13,23 @@ export class HomePage extends React.Component {
     this.state = {
       movies: [],
       query: "",
-      isFetching: false
+      isFetching: false,
+      isError: false,
+      errorText: ""
     }
   }
+
   _queryMovies(query) {
     this.props.loadMovies(query);
     this.setState({query: query});
   }
 
   render() {
-    const { movies, isFetching } = this.props;
+    const { movies, isFetching, isError, errorText } = this.props;
     return( 
 
       <div>
-        <Form queryMovies={this._queryMovies.bind(this)} isFetching={isFetching}/>
+        <Form queryMovies={this._queryMovies.bind(this)} isFetching={isFetching} isError={isError} errorText={errorText}/>
         <MovieGallery movies={movies}/>
       </div>
     )
@@ -37,7 +40,9 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies,
     query: state.query,
-    isFetching: state.isFetching
+    isFetching: state.isFetching,
+    isError: state.isError,
+    errorText: state.errorText
   }
 }
 
