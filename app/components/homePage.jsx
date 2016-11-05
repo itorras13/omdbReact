@@ -17,11 +17,7 @@ export class HomePage extends React.Component {
     }
   }
   _queryMovies(query) {
-    if (query.length < 2) {
-      alert('String must be of at least length two!');
-    } else {
-      this.props.loadMovies(query);
-    }
+    this.props.loadMovies(query);
     this.setState({query: query});
   }
 
