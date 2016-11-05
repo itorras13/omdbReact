@@ -4,18 +4,13 @@ export default class Form extends React.Component {
 
   _processQuery(event) {
     event.preventDefault();
-    if (this.state.queryString.length > 1) {
-      this.setState({isError: false});
-      this.props.queryMovies(this.state.queryString);
-    } else {
-      this.setState({isError: true, errorText: "String must be of at least length two!"})
-    }
+    this.props.queryMovies(this.state.queryString);
     this.setState({queryString: ""})
   }
 
   constructor(props) {
     super(props);
-    this.state = {queryString: "", isError: false, errorText: ""};
+    this.state = {queryString: ""};
     this._handleChange = this._handleChange.bind(this);
     this._processQuery = this._processQuery.bind(this);
   }
@@ -24,14 +19,10 @@ export default class Form extends React.Component {
     this.setState({queryString: event.target.value});
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({isError: nextProps.isError, errorText: nextProps.errorText})
-  }
-
   render() {
     return (
       <div className="center">
-        { this.state.isError ? <div className="alert alert-danger" role="alert">{this.state.errorText}</div> : false }
+        { this.props.isError ? <div className="alert alert-danger" role="alert">{this.props.errorText}</div> : false }
         <div className="form">
           <h3>Search Titles:</h3>
           <input className="form-control" type="text"
