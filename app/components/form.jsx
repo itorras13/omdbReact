@@ -19,6 +19,14 @@ export default class Form extends React.Component {
     this.setState({queryString: event.target.value});
   }
 
+  _renderActivity() {
+    if (this.props.isFetching) {
+      return <ActivityIndicator number={5} duration={200} activeColor="#0099CC" borderColor="white"/>;
+    } else {
+      return <button className="btn btn-primary" onClick={this._processQuery}>Submit</button>;
+    }
+  }
+
   render() {
     return (
       <div className="center">
@@ -29,9 +37,7 @@ export default class Form extends React.Component {
             placeholder="Samurai"
             value={this.state.queryString}
             onChange={this._handleChange} /><br/><br/>
-          { this.props.isFetching ? <ActivityIndicator number={5} duration={200} activeColor="#0099CC" borderColor="white"/>
-                                  : <button className="btn btn-primary" onClick={this._processQuery}>Submit</button>
-          }
+          { this._renderActivity() }
           <br/><br/>
         </div>
       </div>
